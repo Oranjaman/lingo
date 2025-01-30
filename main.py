@@ -20,9 +20,10 @@ def read_root():
 @app.post("/generate")
 async def generate_message(request: MessageRequest):
     try:
-        # Here you'll add the actual message generation logic
-        # For now, just returning a test response
+        # Using actual values from the request instead of template literals
         enhanced = f"Enhanced {request.tone} message for: {request.original_message}"
+        if request.recipient:
+            enhanced += f" (to {request.recipient})"
         return MessageResponse(enhanced_message=enhanced)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
