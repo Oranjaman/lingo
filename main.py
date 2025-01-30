@@ -21,7 +21,7 @@ def read_root():
 async def generate_message(request: MessageRequest):
     try:
         # Using actual values from the request instead of template literals
-        enhanced = f"Enhanced {request.tone} message for: {request.original_message}"
+        enhanced = f"Enhanced {request.tone} message for: {request.originalmessage}"
         if request.recipient:
             enhanced += f" (to {request.recipient})"
         return MessageResponse(enhanced_message=enhanced)
